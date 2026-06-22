@@ -91,7 +91,7 @@ def diagnose(results_path):
 
     if open_rate < 18:
         print(f"\n  LOW OPEN RATE ({open_rate:.0f}%): You may be over-filtering real opens.")
-        print(f"  → Check that community override is enabled for verified humans")
+        print(f"  → V10: community is a feature, not a blanket override — verify member events are being behaviorally screened (not auto-passed)")
         print(f"  → Widen the peak hours window for MPP confirmation")
 
     if bot_open_pct < 40:

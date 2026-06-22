@@ -17,14 +17,15 @@ If you are a publisher or platform selling advertising against those numbers, yo
 Bot-B-Gone is a shared industry framework for taking back control of your data. It provides:
 
 1. **The Methodology:** How to use active honeypots, click timing, velocity signals, and behavioral patterns to find your true baseline.
-2. **The Algorithm:** A production-grade SQL model that classifies every click and open event using 13 click rules (7 bot + 6 human) and 8 open rules (3 bot + 5 human), with confidence levels and probability scores.
+2. **The Algorithm:** Two reference implementations. A production-grade **ML cascade** (`/v2/`) — four layers (Apple MPP stripping, scanner detection, Random Forest, community signal) trained on your own data — and a dependency-free **deterministic SQL model** (`/model/`) with 13 click rules and 8 open rules. Both emit per-event human/bot classifications with confidence levels and probability scores.
 3. **The ESP Guide:** Exactly what raw data to demand from Sailthru, SendGrid, Mailchimp, beehiiv, and others.
 4. **The Standard:** A "Confidence Scorecard" for publishers to transparently report their metrics to advertisers.
 5. **The Measurement Kit:** SQL queries to calculate your own FP/FN rates, plus 11 data-backed charts you can regenerate.
 
 ## Repository Structure
 
-* `/model/bot_b_gone_filter.sql` - **The full production algorithm.** 13 click rules, 8 open rules, confidence scoring, probability scores. Drop it into your data warehouse and adapt to your ESP schema.
+* `/v2/` - **The current algorithm (recommended): an ML-powered four-layer cascade.** Start at `/v2/CLAUDE.md`. Includes `classify.py`, `build_profiles.py`, `train_models.py`, full `ARCHITECTURE.md`, industry `BENCHMARKS.md`, an `ESP_COLUMN_MAP.md`, and synthetic `sample_data/` so you can run it end to end without your ESP.
+* `/model/bot_b_gone_filter.sql` - **The original deterministic SQL model.** 13 click rules, 8 open rules, confidence + probability scores, no ML dependencies. A good drop-in starting point you can run directly in your warehouse.
 * `/docs/METHODOLOGY.md` - The core concepts: honeypots, click timing signals, velocity analysis, open classification, and the complete rule reference with data tables.
 * `/docs/MEASURING_SUCCESS.md` - The four output metrics, probability score tuning, the Confidence Scorecard, and SQL queries to measure your own FP/FN rates.
 * `/docs/ESP_GUIDE.md` - How to extract the necessary raw event data from major ESPs.
@@ -33,6 +34,8 @@ Bot-B-Gone is a shared industry framework for taking back control of your data. 
 * `/charts/` - 11 pre-generated charts: timing distributions, rule breakdowns, precision/recall, probability distributions, tradeoff curves, and the Pinocchio Scorecard.
 
 ## Quick Start
+
+For the full ML cascade, follow `/v2/CLAUDE.md` (`python3 v2/quickstart.py` runs it on the bundled synthetic data). For a zero-dependency start, run the deterministic SQL model directly:
 
 ```sql
 -- 1. Adapt the raw_events CTE in /model/bot_b_gone_filter.sql to your ESP schema

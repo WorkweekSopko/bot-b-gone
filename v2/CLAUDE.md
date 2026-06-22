@@ -9,7 +9,7 @@ A four-layer cascade that classifies every email open and click as human or bot:
 1. **Apple MPP Stripping** — Removes fake opens from Apple Mail Privacy Protection
 2. **Scanner Detection** — Catches corporate security scanners (Barracuda, Mimecast, etc.)
 3. **ML Classification** — Random Forest models trained on YOUR data
-4. **Ground Truth Override** — Verified humans (paying subscribers, event attendees) never filtered
+4. **Community Signal (V10)** — Membership (paying subscribers, event attendees) is a high-trust *feature*; member events are still behaviorally screened, not blanket-passed
 
 ## Expected Results
 
@@ -85,7 +85,7 @@ python3 v2/classify.py --input-dir blasts/ --profiles profiles/ --models models/
 Compare your results against the industry benchmarks in `/v2/BENCHMARKS.md`. Key checks:
 - Is your unique open rate between 18-30%? (If higher, you're not filtering enough)
 - Is your CTOR between 4-7%? (If lower, your opens are inflated)
-- Do verified humans (paying subscribers) pass at >97%? (If not, your FP rate is too high)
+- Do verified humans (paying subscribers) pass at a high rate (>90%)? They're weighted generously but NOT auto-passed — a member whose only activity is scanner-driven can still be filtered.
 
 ## File Reference
 
