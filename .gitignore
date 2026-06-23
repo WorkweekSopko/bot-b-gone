@@ -1,3 +1,6 @@
-ml/__pycache__/
+# Python build artifacts
+__pycache__/
+*.pyc
+
 ml/data/gold_standard.csv
 ml/data/soft_labeled.csv
