@@ -85,7 +85,7 @@ python3 v2/classify.py --input-dir blasts/ --profiles profiles/ --models models/
 Compare your results against the industry benchmarks in `/v2/BENCHMARKS.md`. Key checks:
 - Is your unique open rate between 18-30%? (If higher, you're not filtering enough)
 - Is your CTOR between 4-7%? (If lower, your opens are inflated)
-- Do verified humans (paying subscribers) pass at a high rate (>90%)? They're weighted generously but NOT auto-passed — a member whose only activity is scanner-driven can still be filtered.
+- Do verified humans (paying subscribers) pass at a high rate (>90%)? Membership is no longer an auto-pass — a member whose only activity is scanner-driven can still be filtered.
 
 ## File Reference
 

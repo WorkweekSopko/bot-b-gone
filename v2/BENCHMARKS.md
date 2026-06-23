@@ -49,7 +49,7 @@ After running the model, check these:
 - [ ] **Unique open rate between 18-30%** for B2B (if higher, increase MPP stripping aggressiveness)
 - [ ] **Bot open % between 40-60%** (if lower, you're not catching Apple MPP)
 - [ ] **CTOR between 4-7%** for B2B (if lower, opens are still inflated)
-- [ ] **Verified humans pass at a high rate (>90%)** (members are weighted generously but NOT auto-passed; a member whose only activity is scanner-driven can still be filtered)
+- [ ] **Verified humans pass at a high rate (>90%)** (membership is no longer an auto-pass; a member whose only activity is scanner-driven can still be filtered)
 - [ ] **Social footer links are >95% bot** (if not, check your URL classification)
 - [ ] **Single content clicks >60s are >80% human** (if not, check your human rules)
 - [ ] **Opens-per-opener between 2.0-3.0x** (if below 1.5x, you may be over-filtering re-reads)

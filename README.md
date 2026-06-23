@@ -26,6 +26,7 @@ Bot-B-Gone is a shared industry framework for taking back control of your data. 
 
 * `/v2/` - **The current algorithm (recommended): an ML-powered four-layer cascade.** Start at `/v2/CLAUDE.md`. Includes `classify.py`, `build_profiles.py`, `train_models.py`, full `ARCHITECTURE.md`, industry `BENCHMARKS.md`, an `ESP_COLUMN_MAP.md`, and synthetic `sample_data/` so you can run it end to end without your ESP.
 * `/model/bot_b_gone_filter.sql` - **The original deterministic SQL model.** 13 click rules, 8 open rules, confidence + probability scores, no ML dependencies. A good drop-in starting point you can run directly in your warehouse.
+* `/ml/` - A separate soft-label **XGBoost** research pipeline (training framework + experiment harness). Optional / advanced; the supported per-publisher training path is `v2/train_models.py`.
 * `/docs/METHODOLOGY.md` - The core concepts: honeypots, click timing signals, velocity analysis, open classification, and the complete rule reference with data tables.
 * `/docs/MEASURING_SUCCESS.md` - The four output metrics, probability score tuning, the Confidence Scorecard, and SQL queries to measure your own FP/FN rates.
 * `/docs/ESP_GUIDE.md` - How to extract the necessary raw event data from major ESPs.
